@@ -1,26 +1,41 @@
 import pyxel
 
+SCREEN_WIDTH = 160
+SCREEN_HEIGHT = 120
+
 class GameWindow:
     def __init__(self):
-        pyxel.init(160,120,title="BOmBs")
+        pyxel.init(SCREEN_WIDTH,SCREEN_HEIGHT,title="BOmBs")
         pyxel.mouse(True)
-        self.number= 0
+        pyxel.load("my_resource.pyxres")
+        self.player_x = SCREEN_WIDTH // 2
+        self.player_y = SCREEN_HEIGHT *4//5
+        self.heart_x = SCREEN_WIDTH //2
+        self.heart_y = 0
+        self.isCollision = False
         pyxel.run(self.update,self.draw)
 
 
     def update(self):
         if pyxel.btnp(pyxel.KEY_ESCAPE):
             pyxel.quit()
-        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
-            if 20 <= pyxel.mouse_x <= 40 and 50 <= pyxel.mouse_y <= 70:
-                self.number -= 1
-            elif 100 <= pyxel.mouse_x <= 120 and 50 <= pyxel.mouse_y <=70:
-                self.number += 1
+        if pyxel.btn(pyxel.KEY_RIGHT) and self.player_x < SCREEN_WIDTH -12:
+            self.player_x += 1
+        elif pyxel.btn(pyxel.KEY_LEFT) and self.player_x > -4:
+            self.player_x -= 1
+
+        if self.heart_y < SCREEN_HEIGHT:
+            self.heart_y += 1
+        if (self.player_x <= self.heart_x <= self.player_x + 8 and
+            self.player_y <= self.heart_y <= self.player_y +8):
+            self.isCollision = True
 
     def draw(self):
-        pyxel.cls(pyxel.COLOR_GRAY)
-        pyxel.text(70,60,f"{self.number}",pyxel.COLOR_BLACK)
-        pyxel.text(30,60,"-",pyxel.COLOR_BLACK)
-        pyxel.text(110, 60, "+", pyxel.COLOR_BLACK)
+        pyxel.cls(pyxel.COLOR_GREEN)
+        pyxel.blt(self.heart_x,self.heart_y,0,8,0,8,8,pyxel.COLOR_BLACK)
+        pyxel.blt(self.player_x, self.player_y,0,16,0,16,16,pyxel.COLOR_BLACK)
+
+        if self.isCollision:
+            pyxel.text(SCREEN_WIDTH //2 - 15,SCREEN_HEIGHT//2,"GAME OVER",pyxel.COLOR_ORANGE)
 
 game = GameWindow()
