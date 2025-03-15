@@ -1,5 +1,6 @@
-# uhhhh
-Retro 2d game made using Pyxel module. (In development)
+# 2D retro Game in development 
+A game made using Pyxel module of python
 
-## rn
-<img src=".idea/.img/winowDemo.png" alt="Image" width="600" />
+## Start screen
+<img src=".idea/.img/winowDemo.png" alt="Image" width="500" />
+## Demo
