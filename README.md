@@ -1,7 +1,8 @@
-# 2D retro Game in development 
-A game made using Pyxel module of python
+# 2D retro Game made with pyxel engine
+A console like 2d pixelated game 
+(will be adding select difficulty feature soon)
 
 ## Start screen
-<img src=".idea/.img/winowDemo.png" alt="Image" width="500" />
+
 
 ## Demo
