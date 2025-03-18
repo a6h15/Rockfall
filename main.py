@@ -22,7 +22,7 @@ class heart:
 
 class GameWindow:
     def __init__(self):
-        pyxel.init(SCREEN_WIDTH,SCREEN_HEIGHT,title="BOmBs")
+        pyxel.init(SCREEN_WIDTH,SCREEN_HEIGHT,title="RockFall")
         pyxel.mouse(True)
         self.current_screen = START_SCENE
         pyxel.load("my_resource.pyxres")
